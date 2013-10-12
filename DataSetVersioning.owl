@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns:ds-vers="http://www.niso.org/schemas/iso25964/DataSet/Versioning#" xml:base="http://www.niso.org/schemas/iso25964/DataSet/Versioning" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:dcterms="http://purl.org/dc/terms/">
+<rdf:RDF xmlns:dsv="http://www.niso.org/schemas/iso25964/DataSet/Versioning#" xml:base="http://www.niso.org/schemas/iso25964/DataSet/Versioning" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:dcterms="http://purl.org/dc/terms/">
 	<owl:Ontology rdf:about="http://www.niso.org/schemas/iso25964/DataSet/Versioning">
 		<rdfs:comment xml:lang="en">Suggestion to add a new class capturing the version (release or publication of) a Thesaurus publication in a SPARQL end-point, an LOD publication or a dataset publication.
 
