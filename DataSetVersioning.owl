@@ -7,7 +7,7 @@ See Version History Proposal proposing:
 - a version history set (ds-vers:VersionHistorySet) with fixed URI for its unique thesaurus version set instance, and
 - a version history record instance (ds-vers:VersionHistoryRecord) with a thesaurus version specific URI corresponds the ISO 25964 VersionHistory.
 </rdfs:comment>
-		<rdfs:seeAlso rdf:resource="http://www.niso.org/apps/group_public/download.php/9627/Correspondence%20ISO25964-SKOSXL-MADS-2012-10-21.pdf"/>
+		<rdfs:seeAlso rdf:resource="http://www.niso.org/schemas/iso25964/correspondencesSKOS/"/>
 	</owl:Ontology>
 	<!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
