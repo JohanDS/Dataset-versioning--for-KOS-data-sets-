@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="DiffReport">
+		<xs:annotation>
+			<xs:documentation>Root element Delta Report:
+The fromCS-, fromVersion-, toCS- and toVersion attributes do specify the concept schemes and their version from which this is the delta report.
+It's a delta report of 2 concept schemes:
+1. the from-concept scheme specified by the fromCS and fromVersion-attributes
+2. the to-concept scheme specified by the toCS and toVersion-attributes
+The from- and to concept scheme can be the same concept schemes but different versions.
+
+
+Delta report between the specified 'from-concept scheme' with version specified by 'fromVersion' and the 'to-concept scheme' with version specified by 'toVersion'    </xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="LabelChanges"/>
+				<xs:element ref="RelationChanges"/>
+				<xs:element ref="ConceptChanges"/>
+				<xs:element ref="MergedConcepts"/>
+				<xs:element ref="SplittedConcepts"/>
+			</xs:sequence>
+			<xs:attribute name="fromCS" type="xs:anyURI" use="optional"/>
+			<xs:attribute name="toCS" type="xs:anyURI" use="optional"/>
+			<xs:attribute name="fromVersion" type="xs:string" use="optional"/>
+			<xs:attribute name="toVersion" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="LabelChanges" type="LabelChangesType">
+		<xs:unique name="OneChangePerConcept">
+			<xs:selector xpath="LabelChange"/>
+			<xs:field xpath="@uri"/>
+		</xs:unique>
+	</xs:element>
+	<xs:element name="ConceptChanges" type="ConceptChangesType">
+		<xs:unique name="uniqueConcepts">
+			<xs:selector xpath="*"/>
+			<xs:field xpath="@uri"/>
+		</xs:unique>
+	</xs:element>
+	<xs:element name="RelationChanges" type="RelationChangesType">
+		<xs:unique name="uniqueRelations">
+			<xs:selector xpath="*"/>
+			<xs:field xpath="From/@uri"/>
+			<xs:field xpath="@relation"/>
+			<xs:field xpath="To/@uri"/>
+		</xs:unique>
+	</xs:element>
+	<xs:complexType name="ConceptChangesType">
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="New">
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="conceptRefType">
+							<xs:attribute name="replacedUri" type="xs:anyURI" use="optional">
+								<xs:annotation>
+									<xs:documentation>The uri of the orginal(deleted) concept if this concept is the result of a move (the uri of the orginal(deleted) concept that is been moved to this new concept).
+Look at the deleted concepts with this uri to find notation and identifier.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Delete">
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="conceptRefType">
+							<xs:attribute name="replacingUri" type="xs:anyURI" use="optional">
+								<xs:annotation>
+									<xs:documentation>The uri of the new concept to which this concept has been moved.
+(The uri of the new concept if this concept is deleted as result of a move)
+Look at the new concepts with this uri to find notation and identifier.
+</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="RelationChangesType">
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="New" type="RelationChangeType"/>
+			<xs:element name="Delete" type="RelationChangeType"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:element name="LabelChange" type="LabelChangeType">
+		<xs:unique name="OneChangePerLanguage">
+			<xs:selector xpath="*"/>
+			<xs:field xpath="@language"/>
+		</xs:unique>
+	</xs:element>
+	<xs:complexType name="LabelChangesType">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element ref="LabelChange"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="conceptRefType">
+		<xs:attribute name="uri" type="xs:anyURI" use="required"/>
+		<xs:attribute name="notation" type="xs:anySimpleType" use="optional"/>
+		<xs:attribute name="identifier" type="xs:anySimpleType" use="optional"/>
+		<xs:attribute name="type" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="S"/>
+					<xs:enumeration value="O"/>
+					<xs:enumeration value="OG"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="RelationChangeType">
+		<xs:sequence>
+			<xs:element name="From" type="conceptRefType"/>
+			<xs:element name="To" type="conceptRefType"/>
+		</xs:sequence>
+		<xs:attribute name="relation" type="xs:anyURI" use="required"/>
+		<xs:attribute name="moved" use="optional">
+			<xs:annotation>
+				<xs:documentation>'From' if the from-concept of the relation is new as result of a concept move
+'To' if the to-concept of the relation is new as result of a concept move</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="From"/>
+					<xs:enumeration value="To"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="LabelChangeType">
+		<xs:complexContent>
+			<xs:extension base="conceptRefType">
+				<xs:choice maxOccurs="unbounded">
+					<xs:element name="Rename">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="From" type="xs:string"/>
+								<xs:element name="To" type="xs:string"/>
+							</xs:sequence>
+							<xs:attribute name="language" type="xs:language" use="required"/>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="New">
+						<xs:complexType>
+							<xs:simpleContent>
+								<xs:extension base="xs:string">
+									<xs:attribute name="language" type="xs:language" use="required"/>
+								</xs:extension>
+							</xs:simpleContent>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="Delete">
+						<xs:complexType>
+							<xs:simpleContent>
+								<xs:extension base="xs:string">
+									<xs:attribute name="language" type="xs:language" use="required"/>
+								</xs:extension>
+							</xs:simpleContent>
+						</xs:complexType>
+					</xs:element>
+				</xs:choice>
+				<xs:attribute name="replacedUri" type="xs:anyURI" use="optional">
+					<xs:annotation>
+						<xs:documentation>The uri of the orginal concept that is been moved to a new concept.
+Look at the deleted concepts with this uri to find notation and identifier.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="MappingType">
+		<xs:sequence maxOccurs="unbounded">
+			<xs:element name="From" type="conceptRefType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="To" type="conceptRefType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SplitType">
+		<xs:complexContent>
+			<xs:restriction base="MappingType">
+				<xs:sequence maxOccurs="unbounded">
+					<xs:element name="From" type="conceptRefType"/>
+					<xs:element name="To" type="conceptRefType" minOccurs="2" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="MergeType">
+		<xs:complexContent>
+			<xs:restriction base="MappingType">
+				<xs:sequence maxOccurs="unbounded">
+					<xs:element name="From" type="conceptRefType" minOccurs="2" maxOccurs="unbounded"/>
+					<xs:element name="To" type="conceptRefType"/>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="MergedConcepts">
+		<xs:complexType>
+			<xs:sequence minOccurs="0" maxOccurs="unbounded">
+				<xs:element name="Merge" type="MergeType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="SplittedConcepts">
+		<xs:complexType>
+			<xs:sequence minOccurs="0" maxOccurs="unbounded">
+				<xs:element name="Split" type="SplitType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
