@@ -57,6 +57,20 @@ There can be any number of ds-vers:isVersionRecordOf (depending on the physical 
 		<rdfs:isDefinedBy rdf:resource="http://www.niso.org/schemas/iso25964/DataSet/Versioning"/>
 		<owl:inverseOf rdf:resource="http://www.niso.org/schemas/iso25964/DataSet/Versioning#hasVersionRecord"/>
 	</owl:ObjectProperty>
+	<!-- http://www.niso.org/schemas/iso25964/DataSet/Versioning#requiresDatasetOfRecord -->
+	<owl:ObjectProperty rdf:about="http://www.niso.org/schemas/iso25964/DataSet/Versioning#requiresDatasetOfRecord">
+		<rdfs:label xml:lang="en">requires dataset version</rdfs:label>
+		<rdfs:comment xml:lang="en">The dataset version detailed in the subject dataset record requires the.dataset version detailed by the object dataset record.
+Typically the subject dataset version refers resources defined by the object dataset version.
+This relation is intended to capture dependencies between dataset versions of different datasets.
+Example:
+- the source dataset is a (a version of a) SKOS ConceptScheme about certification.
+- the object dataset is a (version and/or variant of) a national (or cross national) qualification framework
+- certifications may get a tagging to identify the qualification level according a specific qualification framework.</rdfs:comment>
+		<rdfs:isDefinedBy rdf:resource="http://www.niso.org/schemas/iso25964/DataSet/Versioning"/>
+		<rdfs:domain rdf:resource="http://www.niso.org/schemas/iso25964/DataSet/Versioning#VersionHistoryRecord"/>
+		<rdfs:range rdf:resource="http://www.niso.org/schemas/iso25964/DataSet/Versioning#VersionHistoryRecord"/>
+	</owl:ObjectProperty>
 	<!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
