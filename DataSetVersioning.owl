@@ -34,7 +34,7 @@ The object of this property is a dsv:VersionHistoryRecord</rdfs:comment>
 	</owl:ObjectProperty>
 	<!-- http://www.niso.org/schemas/iso25964/DataSet/Versioning#hasVersionRecord -->
 	<owl:ObjectProperty rdf:about="http://www.niso.org/schemas/iso25964/DataSet/Versioning#hasVersionRecord">
-		<rdfs:label xml:lang="en">has version</rdfs:label>
+		<rdfs:label xml:lang="en">has version record</rdfs:label>
 		<rdfs:isDefinedBy rdf:resource="http://www.niso.org/schemas/iso25964/DataSet/Versioning"/>
 		<rdfs:range rdf:resource="http://www.niso.org/schemas/iso25964/DataSet/Versioning#VersionHistoryRecord"/>
 	</owl:ObjectProperty>
@@ -51,7 +51,7 @@ The versionNote can be mapped to skos:note.</rdfs:comment>
 	</owl:ObjectProperty>
 	<!-- http://www.niso.org/schemas/iso25964/DataSet/Versioning#isVersionRecordOf -->
 	<owl:ObjectProperty rdf:about="http://www.niso.org/schemas/iso25964/DataSet/Versioning#isVersionRecordOf">
-		<rdfs:label xml:lang="en">is version of</rdfs:label>
+		<rdfs:label xml:lang="en">is version record of</rdfs:label>
 		<rdfs:comment xml:lang="en">The object of this property references to the data set end points (SPARQL end-point, LOD, data-set, …). 
 There can be any number of dsv:isVersionRecordOf (depending on the physical publications made of that data set version).</rdfs:comment>
 		<rdfs:isDefinedBy rdf:resource="http://www.niso.org/schemas/iso25964/DataSet/Versioning"/>
