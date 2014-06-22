@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns:ds-vers="http://www.niso.org/schemas/iso25964/DataSet/Versioning#" xml:base="http://www.niso.org/schemas/iso25964/DataSet/Versioning" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:dcterms="http://purl.org/dc/terms/">
+<rdf:RDF xmlns:dsv="http://www.niso.org/schemas/iso25964/DataSet/Versioning#" xml:base="http://www.niso.org/schemas/iso25964/DataSet/Versioning" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:dcterms="http://purl.org/dc/terms/">
 	<owl:Ontology rdf:about="http://www.niso.org/schemas/iso25964/DataSet/Versioning">
 		<rdfs:comment xml:lang="en">Suggestion to add a new class capturing the version (release or publication of) a Thesaurus publication in a SPARQL end-point, an LOD publication or a dataset publication.
 
 See Version History Proposal proposing:
-- a version history set (ds-vers:VersionHistorySet) with fixed URI for its unique thesaurus version set instance, and
-- a version history record instance (ds-vers:VersionHistoryRecord) with a thesaurus version specific URI corresponds the ISO 25964 VersionHistory.
+- a version history set (dsv:VersionHistorySet) with fixed URI for its unique thesaurus version set instance, and
+- a version history record instance (dsv:VersionHistoryRecord) with a thesaurus version specific URI corresponds the ISO 25964 VersionHistory.
 </rdfs:comment>
 		<rdfs:seeAlso rdf:resource="http://www.niso.org/schemas/iso25964/correspondencesSKOS/"/>
 	</owl:Ontology>
@@ -26,8 +26,8 @@ See Version History Proposal proposing:
 	<!-- http://www.niso.org/schemas/iso25964/DataSet/Versioning#currentVersionRecord -->
 	<owl:ObjectProperty rdf:about="http://www.niso.org/schemas/iso25964/DataSet/Versioning#currentVersionRecord">
 		<rdfs:label xml:lang="en">current version record</rdfs:label>
-		<rdfs:comment xml:lang="en">ds-vers:currentVersionRecord on a version set details the last published version. 
-The object of this property is a ds-vers:VersionHistoryRecord</rdfs:comment>
+		<rdfs:comment xml:lang="en">dsv:currentVersionRecord on a version set details the last published version. 
+The object of this property is a dsv:VersionHistoryRecord</rdfs:comment>
 		<rdfs:isDefinedBy rdf:resource="http://www.niso.org/schemas/iso25964/DataSet/Versioning"/>
 		<rdfs:range rdf:resource="http://www.niso.org/schemas/iso25964/DataSet/Versioning#VersionHistoryRecord"/>
 		<rdfs:domain rdf:resource="http://www.niso.org/schemas/iso25964/DataSet/Versioning#VersionHistorySet"/>
@@ -41,7 +41,7 @@ The object of this property is a ds-vers:VersionHistoryRecord</rdfs:comment>
 	<!-- http://www.niso.org/schemas/iso25964/DataSet/Versioning#hasVersionHistorySet -->
 	<owl:ObjectProperty rdf:about="http://www.niso.org/schemas/iso25964/DataSet/Versioning#hasVersionHistorySet">
 		<rdfs:label xml:lang="en">has version history set</rdfs:label>
-		<rdfs:comment xml:lang="en">Each VersionHistoryRecord identifies its Version History Set with exactly one ds-vers:hasVersionHistorySet object property. 
+		<rdfs:comment xml:lang="en">Each VersionHistoryRecord identifies its Version History Set with exactly one dsv:hasVersionHistorySet object property. 
 The mandatory attribute identifier may be mapped to the Dublin Core property dc:identifier. 
 The date attribute is mapped to the Dublin Core property dc:date. 
 The versionNote can be mapped to skos:note.</rdfs:comment>
@@ -53,7 +53,7 @@ The versionNote can be mapped to skos:note.</rdfs:comment>
 	<owl:ObjectProperty rdf:about="http://www.niso.org/schemas/iso25964/DataSet/Versioning#isVersionRecordOf">
 		<rdfs:label xml:lang="en">is version of</rdfs:label>
 		<rdfs:comment xml:lang="en">The object of this property references to the data set end points (SPARQL end-point, LOD, data-set, …). 
-There can be any number of ds-vers:isVersionRecordOf (depending on the physical publications made of that data set version).</rdfs:comment>
+There can be any number of dsv:isVersionRecordOf (depending on the physical publications made of that data set version).</rdfs:comment>
 		<rdfs:isDefinedBy rdf:resource="http://www.niso.org/schemas/iso25964/DataSet/Versioning"/>
 		<owl:inverseOf rdf:resource="http://www.niso.org/schemas/iso25964/DataSet/Versioning#hasVersionRecord"/>
 	</owl:ObjectProperty>
@@ -111,7 +111,7 @@ The versionNote can be mapped to skos:note.</rdfs:comment>
 				<owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
 			</owl:Restriction>
 		</rdfs:subClassOf>
-		<rdfs:comment xml:lang="en">The VersionHistorySet has exactly one ds-vers:currentVersionRecord object property to the version set detailing the last published version. The object of this property is the version record describing the Data Set which is current.
+		<rdfs:comment xml:lang="en">The VersionHistorySet has exactly one dsv:currentVersionRecord object property to the version set detailing the last published version. The object of this property is the version record describing the Data Set which is current.
 (not the latest.)</rdfs:comment>
 		<rdfs:isDefinedBy rdf:resource="http://www.niso.org/schemas/iso25964/DataSet/Versioning"/>
 	</owl:Class>
