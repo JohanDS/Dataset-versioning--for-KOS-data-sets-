@@ -9,7 +9,7 @@ See Version History Proposal specifying:
 </rdfs:comment>
 		<rdfs:seeAlso rdf:resource="http://www.niso.org/schemas/iso25964/correspondencesSKOS/"/>
 		<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-10-04</dcterms:created>
-		<dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2014-07-31</dcterms:modified>
+		<dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2014-08-01</dcterms:modified>
 		<dcterms:title xml:lang="en">Dataset Versioning ontology</dcterms:title>
 		<dcterms:creator foaf:name="Johan De Smedt"/>
 	</owl:Ontology>
@@ -41,6 +41,10 @@ The object of this property is a dsv:VersionHistoryRecord</rdfs:comment>
 	<!-- http://purl.org/iso25964/DataSet/Versioning#hasVersionRecord -->
 	<owl:ObjectProperty rdf:about="http://purl.org/iso25964/DataSet/Versioning#hasVersionRecord">
 		<rdfs:label xml:lang="en">has version record</rdfs:label>
+		<rdfs:comment xml:lang="en">The dataset holds this statement using any applicable form
+- the dataset is an RDF dataset: as a plain RDF statement on the main resource of the dataset.
+- the dataset is an XML or HTML resource: as an annotation using RDFa, schema.org or any other annotation language.
+- the dataset is any proper encoding: as documentation or metadata on the metadata provided with the dataset.</rdfs:comment>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/iso25964/DataSet/Versioning"/>
 		<rdfs:range rdf:resource="http://purl.org/iso25964/DataSet/Versioning#VersionHistoryRecord"/>
 		<dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-10-04</dcterms:modified>
@@ -62,8 +66,8 @@ The versionNote can be mapped to skos:note.</rdfs:comment>
 	<!-- http://purl.org/iso25964/DataSet/Versioning#isVersionRecordOf -->
 	<owl:ObjectProperty rdf:about="http://purl.org/iso25964/DataSet/Versioning#isVersionRecordOf">
 		<rdfs:label xml:lang="en">is version record of</rdfs:label>
-		<rdfs:comment xml:lang="en">The object of this property references to the data set end points (SPARQL end-point, LOD, data-set, …). 
-There can be any number of dsv:isVersionRecordOf (depending on the physical publications made of that data set version).</rdfs:comment>
+		<rdfs:comment xml:lang="en">The object of this property references a physical dataset (a file, a SPARQL end-point, an LOD resource, …). 
+There can be any number of dsv:isVersionRecordOf (depending on the physical publications made of that dataset version).</rdfs:comment>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/iso25964/DataSet/Versioning"/>
 		<rdfs:domain rdf:resource="http://purl.org/iso25964/DataSet/Versioning#VersionHistoryRecord"/>
 		<dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-10-04</dcterms:modified>
@@ -87,9 +91,13 @@ Example:
 	</owl:ObjectProperty>
 	<owl:ObjectProperty rdf:about="http://purl.org/dc/terms/isVersionOf">
 		<rdfs:label xml:lang="en">Is Version Of</rdfs:label>
-		<rdfs:comment xml:lang="en">A related resource of which the described resource is a version, edition, or adaptation.
+		<rdfs:comment xml:lang="en">A related resource of which the described physical resource is a version, edition, or adaptation.
 
-For a dataset, the object value identifies the dsv:VersionHistorySet of the subject dataset.</rdfs:comment>
+For a dataset, the object value identifies the dsv:VersionHistorySet of the subject dataset.
+The dataset holds this statement using any applicable form
+- the dataset is an RDF dataset: as a plain RDF statement on the main resource of the dataset.
+- the dataset is an XML or HTML resource: as an annotation using RDFa, schema.org or any other annotation language.
+- the dataset is any proper encoding: as documentation or metadata on the metadata provided with the dataset.</rdfs:comment>
 		<dcterms:description xml:lang="en">Changes in version imply substantive changes in content rather than differences in format.</dcterms:description>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
 		<dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2000-07-11</dcterms:issued>
