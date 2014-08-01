@@ -65,7 +65,7 @@ The versionNote can be mapped to skos:note.</rdfs:comment>
 		<rdfs:comment xml:lang="en">The object of this property references to the data set end points (SPARQL end-point, LOD, data-set, …). 
 There can be any number of dsv:isVersionRecordOf (depending on the physical publications made of that data set version).</rdfs:comment>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/iso25964/DataSet/Versioning"/>
-		<owl:inverseOf rdf:resource="http://purl.org/iso25964/DataSet/Versioning#hasVersionRecord"/>
+		<rdfs:domain rdf:resource="http://purl.org/iso25964/DataSet/Versioning#VersionHistoryRecord"/>
 		<dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-10-04</dcterms:modified>
 		<vs:term_status>proposed</vs:term_status>
 	</owl:ObjectProperty>
