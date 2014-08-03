@@ -9,7 +9,8 @@ See Version History Proposal specifying:
 </rdfs:comment>
 		<rdfs:seeAlso rdf:resource="http://www.niso.org/schemas/iso25964/correspondencesSKOS/"/>
 		<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-10-04</dcterms:created>
-		<dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2014-08-01</dcterms:modified>
+		<dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2014-08-03</dcterms:modified>
+		<dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2014-08-03</dc:date>
 		<dcterms:title xml:lang="en">Dataset Versioning ontology</dcterms:title>
 		<dcterms:creator foaf:name="Johan De Smedt"/>
 	</owl:Ontology>
@@ -70,6 +71,7 @@ The versionNote can be mapped to skos:note.</rdfs:comment>
 There can be any number of dsv:isVersionRecordOf (depending on the physical publications made of that dataset version).</rdfs:comment>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/iso25964/DataSet/Versioning"/>
 		<rdfs:domain rdf:resource="http://purl.org/iso25964/DataSet/Versioning#VersionHistoryRecord"/>
+		<rdfs:range rdf:resource="http://purl.org/dc/terms/PhysicalResource"/>
 		<dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-10-04</dcterms:modified>
 		<vs:term_status>proposed</vs:term_status>
 	</owl:ObjectProperty>
@@ -150,6 +152,12 @@ The versionNote can be mapped to skos:note.</rdfs:comment>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/iso25964/DataSet/Versioning"/>
 		<dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-10-04</dcterms:modified>
 		<vs:term_status>proposed</vs:term_status>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/dc/terms/PhysicalResource">
+		<rdfs:label xml:lang="en">Physical Resource</rdfs:label>
+		<rdfs:comment xml:lang="en">A material thing.</rdfs:comment>
+		<rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+		<dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2008-01-14</dcterms:issued>
 	</owl:Class>
 	<!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
