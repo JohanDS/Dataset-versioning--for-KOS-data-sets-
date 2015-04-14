@@ -119,7 +119,7 @@ The dataset holds this statement using any applicable form
     //
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
-	<!-- http://purl.org/iso25964/DataSet/Versioning#VersionHistory -->
+	<!-- http://purl.org/iso25964/DataSet/Versioning#VersionHistoryRecord -->
 	<owl:Class rdf:about="http://purl.org/iso25964/DataSet/Versioning#VersionHistoryRecord">
 		<rdfs:label xml:lang="en">Version history record</rdfs:label>
 		<rdfs:comment xml:lang="en">Each VersionHistoryRecord identifies its Version History Set with exactly one hasVersionHistorySet object property. 
